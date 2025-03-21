@@ -1,29 +1,3 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-.next
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -65,40 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-# dependencies
-node_modules/
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
 
-# environment
-.env
-.env.local
-.env.development
-.env.test
-.env.production
+example
 
-# build outputs
-dist/
-build/
-out/
-
-# cache
-.cache/
-.npm/
-.eslintcache
-
-# coverage reports
-coverage/
-
-# OS generated files
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Editor/IDE specific
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
-.idea/
-*.sublime-*
+.next
+node_modules

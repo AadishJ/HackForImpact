@@ -140,7 +140,7 @@ function RoutingMachine({ source, destination, onRoutesFound }: RoutingMachinePr
                 }
             });
         };
-    }, [map, source, destination]);
+    }, [map, source, destination]); // eslint-disable-line react-hooks/exhaustive-deps
 
     // Helper function to create a routing control
     function createRoutingControl(
