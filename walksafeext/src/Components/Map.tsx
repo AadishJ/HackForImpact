@@ -73,6 +73,7 @@ const Map = ({
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [routes, setRoutes] = useState<RouteData[]>([]);
     const requestCompletedRef = useRef<boolean>(false);
+    const markerRefsRef = useRef<any[]>([]);
 
     // Calculate number of alternative routes to try
     const ROUTE_VARIANTS = 2; // Reduced to 2 for better performance
@@ -144,19 +145,36 @@ const Map = ({
                         }
                     }, 100);
 
-                    // Create simple markers instead of custom ones for reliability
-                    L.marker([sourceLat, sourceLng]).addTo(mapInstanceRef.current)
-                        .bindPopup('<strong>Start</strong>');
+                    try {
+                        // Clear any existing markers first
+                        markerRefsRef.current.forEach(marker => {
+                            if (mapInstanceRef.current) {
+                                marker.remove();
+                            }
+                        });
+                        markerRefsRef.current = [];
 
-                    L.marker([destLat, destLng]).addTo(mapInstanceRef.current)
-                        .bindPopup('<strong>Destination</strong>');
+                        // Create and store new markers
+                        const sourceMarker = L.marker([sourceLat, sourceLng])
+                            .addTo(mapInstanceRef.current)
+                            .bindPopup('<strong>Start</strong>');
 
-                    // Fit bounds to show both markers
-                    const bounds = L.latLngBounds(
-                        [sourceLat, sourceLng],
-                        [destLat, destLng]
-                    );
-                    mapInstanceRef.current.fitBounds(bounds, { padding: [50, 50] });
+                        const destMarker = L.marker([destLat, destLng])
+                            .addTo(mapInstanceRef.current)
+                            .bindPopup('<strong>Destination</strong>');
+
+                        // Store references to the markers for later cleanup
+                        markerRefsRef.current = [sourceMarker, destMarker];
+
+                        // Fit bounds to show both markers
+                        const bounds = L.latLngBounds(
+                            [sourceLat, sourceLng],
+                            [destLat, destLng]
+                        );
+                        mapInstanceRef.current.fitBounds(bounds, { padding: [50, 50] });
+                    } catch (e) {
+                        console.error("Error creating markers:", e);
+                    }
                 } catch (e) {
                     console.error("Error creating map:", e);
                     // Continue with route calculations even if map fails

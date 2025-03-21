@@ -44,7 +44,7 @@ const App = () => {
         setCurrentUrl('Not running in extension context');
 
         // For development/testing - parse a sample Maps URL
-        const testUrl = "https://www.google.com/maps/dir/28.5451017,77.2731306/Mayur+Vihar-1,+Mayur+Vihar+Phase+1+Metro+Station,+Pocket+4,+Mayur+Vihar,+New+Delhi,+Delhi/@28.5794104,77.2321523,13z/data=!3m1!4b1!4m10!4m9!1m1!4e1!1m5!1m1!1s0x390ce49f001c646d:0x399d3398b609d940!2m2!1d77.289608!2d28.6042259!3e2?entry=ttu&g_ep=EgoyMDI1MDMxOS4xIKXMDSoJLDEwMjExNjM5SAFQAw%3D%3D";
+        const testUrl = "https://www.google.com/maps/dir/Grant+Park,+Chicago,+IL,+USA/Navy+Pier,+600+E+Grand+Ave,+Chicago,+IL+60611,+United+States/@41.8830054,-87.62325,15z/data=!3m1!4b1!4m13!4m12!1m5!1m1!1s0x880e2c9fabc8820f:0xe897c144f1557e1d!2m2!1d-87.6208061!2d41.8741516!1m5!1m1!1s0x880e2b4d91f12edb:0xd0acdb96b088a4dc!2m2!1d-87.6050944!2d41.8918633?entry=ttu&g_ep=EgoyMDI1MDMxOS4xIKXMDSoASAFQAw%3D%3D";
         setCurrentUrl(testUrl);
 
         const { source, destination, travelMode: extractedMode } = extractCoordinates(testUrl);
@@ -179,7 +179,7 @@ const App = () => {
       {/* Debug Info */}
       <section className="bg-gray-100 rounded-lg p-2 mb-3">
         <details>
-          <summary className="text-xs font-medium text-gray-600 cursor-pointer">Current URL (debug)</summary>
+          {/* <summary className="text-xs font-medium text-gray-600 cursor-pointer">Current URL (debug)</summary> */}
           <p className="text-xs text-gray-600 mt-1 break-all">{currentUrl}</p>
         </details>
       </section>
