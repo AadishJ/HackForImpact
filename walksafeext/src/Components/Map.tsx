@@ -49,6 +49,9 @@ export interface RouteData {
         totalDistance: number;
         totalTime: number;
     };
+    safetyScore?: number;
+    safetyLabel?: string;
+    safetyStatus?: string;
 }
 
 interface MapProps {
